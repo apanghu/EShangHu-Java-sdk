@@ -15,5 +15,6 @@ beetl 1.2.6.RELEASE
 
 DEMO中加了详细的注释，一看即懂。
 
-作者：Jesse-liu
+作者：Jesse-liu  
+
 邮箱：2683961691@qq.com

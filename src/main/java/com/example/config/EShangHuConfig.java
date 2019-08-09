@@ -17,11 +17,11 @@ public class EShangHuConfig {
     // JSAPI支付api
     public static final String JSAPI_PAY_API = "https://api.1shanghu.com/api/v2/wechat/mp";
     //APP_KEY
-    public static final String APP_KEY = "ZVRKDbntYwAXddTYuQTYPPUMMDE1WVRO";
+    public static final String APP_KEY = "";
     //APP_SECRET
-    public static final String APP_SECRET = "9Dfg4XhF9hoPU8uDAGuhmR4AwRNTmIaC";
+    public static final String APP_SECRET = "";
     //小微商户号
-    public static final String SUB_MCH_ID = "1549617441";
+    public static final String SUB_MCH_ID = "";
 
     //支付结果通知地址
     public static final String NOTIFY_URL = "http://26x0p05904.wicp.vip/weChatPayNotify";
