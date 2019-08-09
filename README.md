@@ -13,7 +13,11 @@ fastjson 1.2.39
 
 beetl 1.2.6.RELEASE
 
-DEMO中加了详细的注释，一看即懂。
+编程工具：
+
+IDEA 
+
+DEMO中加了详细的注释，一看即懂.......
 
 作者：Jesse-liu  
 
