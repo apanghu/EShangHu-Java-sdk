@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>易商户-微信支付</title>
+    <link href="/static/css/wechat_pay.css" rel="stylesheet">
+    <link href="/static/layer/mobile/need/layer.css" rel="stylesheet">
+    <script src="/static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/static/layer/layer.js"></script>
+    <script src="https://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+    <!--<script src="/static/js/qq.js"></script>-->
+</head>
+<body>
+
+<div class="body">
+    <h1 class="mod-title">
+        <span class="ico-wechat"></span><span class="text">微信支付</span>
+    </h1>
+    <div class="mod-ct">
+        <div class="payOrder">
+        </div>
+        <div class="amount">￥${total_fee!}</div>
+        <div class="qr-image" id="qrcode" title="${model!}"></div>
+        <div class="detail" id="payOrderDetail">
+            <dl class="detail-ct" style="display: none;">
+                <dt>商家</dt>
+                <dd id="storeName">${siteName!}</dd>
+                <dt>购买物品</dt>
+                <dd id="productName">${subject!}</dd>
+                <dt>商户订单号</dt>
+                <dd id="billId">${outTradeNo!}</dd>
+                <dt>创建时间</dt>
+                <dd id="createTime">${createDate!,'yyyy-MM-dd HH:mm:ss'}</dd>
+            </dl>
+            <a href="javascript:void(0)" class="arrow"><i class="ico-arrow"></i></a>
+        </div>
+        <div class="tip">
+            <span class="dec dec-left"></span>
+            <span class="dec dec-right"></span>
+            <div class="ico-scan"></div>
+            <div class="tip-text">
+                <p>请使用微信扫一扫</p>
+                <p>扫描二维码完成支付</p>
+            </div>
+        </div>
+        <div class="tip-text">
+        </div>
+    </div>
+    <div class="foot">
+        <div class="inner">
+            <p>手机用户可保存上方二维码到手机中</p>
+            <p>在微信扫一扫中选择“相册”即可</p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/static/js/qrcode.min.js"></script>
+<script src="/static/js/qcloud_util.js"></script>
+<div style="width:720px;height:380px;display:none;">
+    <div id="video-dialog"></div>
+    <a href="javascript:void(0);" onclick="return false;" style="position:absolute;right:-25px;top:-20px;"
+       id="close_video_btn" class="ico-video-close"></a></div>
+<script>
+
+    window.onload = loadmsg();
+
+    var qrcode = new QRCode("qrcode", {
+        text: "${model!}",
+        width: 300,
+        height: 300,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // 订单详情
+    $('#payOrderDetail .arrow').click(function (event) {
+        if ($('#payOrderDetail').hasClass('detail-open')) {
+            $('#payOrderDetail .detail-ct').slideUp(500, function () {
+                $('#payOrderDetail').removeClass('detail-open');
+            });
+        } else {
+            $('#payOrderDetail .detail-ct').slideDown(500, function () {
+                $('#payOrderDetail').addClass('detail-open');
+            });
+        }
+    });
+
+    // 检查是否支付完成
+    function loadmsg() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/wx_payOrder_state",
+            timeout: 8000,
+            data: {outTradeNo: '${payoutTradeNo!}'}, //post数据
+            success: function (data, textStatus) {
+                if (data.status == "success") {
+                    window.location.href = data.backurl;
+                } else {
+                    setTimeout("loadmsg()", 1500);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus == "timeout") {
+                    setTimeout("loadmsg()", 1500);
+                } else { //异常
+                    setTimeout("loadmsg()", 3000);
+                }
+            }
+        });
+    }
+
+
+</script>
+</html>

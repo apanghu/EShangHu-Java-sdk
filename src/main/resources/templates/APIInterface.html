@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信支付API接口三合一操作</title>
+</head>
+<body>
+
+<p style="color: red">退款操作： </p>
+<form action="refund" type="post">
+    商户订单号： <input type="text" name="out_trade_no" value="${out_trade_no!}" placeholder="单号二选择一即可"/><br>
+    <br>
+    易商户平台订单号： <input type="text" name="order_sn" value="${order_sn!}" placeholder="单号二选择一即可"/><br>
+    <br>
+    退款金额： <input type="text" required name="refund_fee" value="${refund_fee!}" placeholder="单位：分 自己转为分"/><br>
+    <br>
+    退款结果：${status_text!}<br>
+    <br>
+    <input type="submit" value="退 款"/>
+</form>
+<br>
+<br>
+<p style="color: red">关闭订单操作： </p>
+
+<form action="close" type="post">
+    商户订单号： <input type="text" name="out_trade_no" value="${out_trade_no!}" placeholder="单号二选择一即可"/><br>
+    <br>
+    易商户平台订单号： <input type="text" name="order_sn" value="${order_sn!}" placeholder="单号二选择一即可"/><br>
+    <br>
+    关闭订单结果：${status_text!}<br>
+    <br>
+    <input type="submit" value="关闭 订单"/>
+</form>
+
+<br>
+<br>
+<p style="color: red">订单查询状态： </p>
+
+<form action="query" type="post">
+    商户订单号： <input type="text" name="out_trade_no" value="${out_trade_no!}" placeholder="单号二选择一即可"/><br>
+    <br>
+    易商户平台订单号： <input type="text" name="order_sn" value="${order_sn!}" placeholder="单号二选择一即可"/><br>
+    <br>
+    订单状态：0:未支付,7:已取消,9:已支付<br>
+    订单状态结果：${status_text!} <br>
+    <br>
+    <input type="submit" value="查询 订单"/>
+</form>
+</body>
+</html>
