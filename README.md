@@ -11,4 +11,4 @@ commons-httpclient 3.1
 
 fastjson 1.2.39
 
-beetl 
+beetl 1.2.6.RELEASE
