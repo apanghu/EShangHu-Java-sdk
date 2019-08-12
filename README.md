@@ -1,6 +1,6 @@
 # EShangHu-Java-sdk
 
-![Image text](https://github.com/zzuljs/CppLearning/blob/master/CppLearning/raw/master/Itachi.jpg)
+![Image text](https://github.com/apanghu/EShangHu-Java-sdk/blob/master/images/QQ%E6%88%AA%E5%9B%BE20190809174404.png)
 
 说明:
 本demo是基于易商户开发 java语言
