@@ -17,6 +17,8 @@ beetl 1.2.6.RELEASE
 
 IDEA 
 
+MAVEN构建工具
+
 DEMO中加了详细的注释，一看即懂.......
 
 作者：Jesse-liu  
